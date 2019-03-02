@@ -1,3 +1,26 @@
-<script>
-//准备测试promise
-</script>
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="always" name="referrer">
+    <title>es6</title>
+    <script>
+        //promise
+        //生命周期
+        //pending进行中 
+        //操作完成 用 .then() 对应两种结果（fulfilled 成了 rejected 不成）
+        let promist = readFile("../README.md");
+        promise.then(function(contents){
+            console.log(contents);
+        }),function(err){
+            console.error(err.message);
+        };
+    </script>
+
+<body>
+</body>
+
+</html>
