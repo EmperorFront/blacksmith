@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>css3 动效</title>
+    <script src="../js/jquery.js"></script>
+    <script>
+     
+    </script>
+<style>
+    h1 {
+        text-shadow: 5px 5px 5px #FF0000;
+    }
+    .skew {
+        width:100px;
+        height:75px;
+        background-color:yellow;
+        border:1px solid black;
+        transform:skew(30deg,20deg);
+        -ms-transform:skew(30deg,20deg); /* IE 9 */
+        -moz-transform:skew(30deg,20deg); /* Firefox */
+        -webkit-transform:skew(30deg,20deg); /* Safari and Chrome */
+        -o-transform:skew(30deg,20deg); /* Opera */
+    }
+    .transition {
+        width:100px;
+        height:100px;
+        background:yellow;
+        -webkit-transition:-webkit-transform 2s; /* Safari and Chrome */
+    }
+    .transition:hover {
+        -webkit-transform:rotateX(80deg) skew(30deg,20deg); /* Safari and Chrome */
+
+    }
+</style>
+<body>
+    <h1>文本阴影效果！</h1>
+    <div>transform:{属性名}(变量) {属性名}(变量) {属性名}(变量) </div>
+    <div>transform 2D属性名包含五种
+            translate()
+            rotate()
+            scale()
+            skew()
+            matrix()
+        3D属性 常用 rotateX()  rotateY() rotateZ() 注意属性：backface-visibility
+    </div>
+    <div>
+        transform: translate() -translate移动 transform改变 。 
+    </div>
+    <div>
+        transition 过渡 等级高于transform 
+    </div>
+    <div>允许CSS属性值在一定的时间区间内平滑的过渡，需要事件的触发，例如单击、获取焦点、失去焦点等</div>
+    <div class="skew">Hello World</div>
+
+    <div class="transition">Hover</div>
+    <div>animate</div>
+</body>
+
+</html>

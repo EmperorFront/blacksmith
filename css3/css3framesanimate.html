@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css3逐帧动画</title>
+    <style>
+    .anim-png{
+        width:230px;
+        height: 202px;
+        background:url(data/pg1.png)no-repeat 0 0;
+        -webkit-animation:leaf 2500ms steps(44) 0s;
+    }
+    @-webkit-keyframes leaf{
+        0%{
+            background-position:-10120px 0;
+        }
+        100%{
+            background-position: 0 0;
+        }
+    }
+
+    .anim-png2{
+        width: 478px;
+          height: 426px;
+        background:url(data/pg2.png)no-repeat 0 0;
+        -webkit-animation:leaf2 2000ms steps(54) infinite 0s;
+    }
+    @-webkit-keyframes leaf2{
+        0%{
+            background-position:-25812px 0;
+        }
+        100%{
+            background-position: 0 0;
+        }
+    }
+    .prepare {
+        bottom: 0;
+        width: 100px;
+        height: 106px;
+        background-position: 0 0;
+        z-index: 1;
+        -webkit-animation: female-prepare 0.85s steps(17) infinite;
+        animation: female-prepare 0.85s steps(17) infinite;
+    }
+    .female {
+        background-image: url(data/pg3.png);
+        background-repeat: no-repeat;
+        background-size: 1700px;
+    }
+    .female.run {
+        bottom: 10px;
+        width: 121px;
+        height: 96px;
+        background-position: 0 -100px;
+        -webkit-animation: female-run 0.4s steps(6) infinite;
+        animation: female-run 0.4s steps(6) infinite;
+        }
+        @-webkit-keyframes female-run {
+        0% {
+            background-position-x: 0;
+        }
+        100% {
+            background-position-x: -729px;
+        }
+        }
+        @keyframes female-run {
+        0% {
+            background-position-x: 0;
+        }
+        100% {
+            background-position-x: -729px;
+        }
+    }
+    .female.die {
+        width: 117px;
+        height: 126px;
+        background-position: -1529px -302px;
+        -webkit-animation: female-die 0.7s steps(14) infinite;
+        animation: female-die 0.7s steps(14) infinite;
+        }
+        @-webkit-keyframes female-die {
+        0% {
+            background-position-x: 0;
+        }
+        100% {
+            background-position-x: -1647px;
+        }
+        }
+        @keyframes female-die {
+        0% {
+            background-position-x: 0;
+        }
+        100% {
+            background-position-x: -1647px;
+        }
+    }
+    </style>
+</head>
+<body>
+<div class="anim-png"></div>
+<div class="anim-png2"></div>
+<div class="js-role-animation js-female female prepare absolute position-left die"></div>
+<div class="js-role-animation js-female female prepare absolute position-left run"></div>
+</body>
+</html>
