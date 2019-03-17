@@ -1,0 +1,86 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas2d</title>
+    <style>
+    </style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div> 离屏缓存的canvas帧图（临时调试用无需显示） </div>
+<canvas id="canvas2"></canvas>
+<script>
+    let canvass = [];
+    let count = 0;
+    window.onload = function () {
+        var canvas = document.getElementById("canvas");
+        canvas.width = 800;
+        canvas.height = 400;
+        var context = canvas.getContext("2d");
+
+        // 获得鼠标点击canvas点的方法:
+        canvas.addEventListener("mouseup", click);
+        function click (event){
+            var x = event.clientX - canvas.getBoundingClientRect().left;
+            var y = event.clientY - canvas.getBoundingClientRect().top;
+            console.log(x,y);
+        }
+        
+
+
+
+
+
+        var canvas2 = document.getElementById("canvas2");
+        canvas2.width = 235;
+        canvas2.height = 200;
+        var context2 = canvas2.getContext("2d");
+
+        //img
+        var backgroundImage = new Image();
+        backgroundImage.src = "data/pg3.png";
+        backgroundImage.onload = function () {
+            //var pattern = context2.createPattern(backgroundImage,"repeat");
+            context2.save();
+            // sx	可选。图片开始剪切的 x 坐标位置。
+            // sy	可选。图片开始剪切的 y 坐标位置。
+            // swidth	可选。被剪切图像的宽度。
+            // sheight	可选。被剪切图像的高度。
+            // x	在画布上放置图像的 x 坐标位置。
+            // y	在画布上放置图像的 y 坐标位置。
+            // width	可选。画布要使用的图像的宽度。（伸展或缩小图像）
+            // height	可选。画布要使用的图像的高度。（伸展或缩小图像）
+            context2.drawImage(backgroundImage,0,200,243,200,0,0,243,200);
+            context2.restore();
+
+            for(let i = 0; i < 6; i++){
+                creater(i);
+            }
+            count = 1;
+        }
+
+        function creater (i) {
+            let bcanvas = document.createElement('canvas');
+            bcanvas.width = 235;
+            bcanvas.height = 200;
+            ctx = bcanvas.getContext('2d');
+            ctx.drawImage(backgroundImage,i*243,200,243,200,0,0,243,200);
+            canvass.push(bcanvas);
+        }
+        
+        window.requestAnimationFrame(function(){show();});
+        function show (){
+            if(count > 0 ){
+                canvas.height = canvas.height; 
+                context.drawImage(canvass[~~count%6], 0, 0);
+                count += 0.3;
+            }
+            window.requestAnimationFrame(function(){show();});
+        }
+    }
+
+</script>
+</body>
+</html>

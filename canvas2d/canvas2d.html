@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>canvas2d</title>
+    <style>
+    </style>
+</head>
+<body>
+<div> canvas 通过旋转上下文实现旋转 可更改上下文调整位置 </div>
+<div> canvas 2d图形库：canvasplus artisanjs rgraph </div>
+<canvas id="canvas"></canvas>
+<canvas id="canvasnoshow"></canvas>
+<script>
+    window.onload = function () {
+        var canvas = document.getElementById("canvas");
+        canvas.width = 800;
+        canvas.height = 1800;
+        var context = canvas.getContext("2d");
+        //需要先保存状态：
+        context.save();
+        context.fillStyle = "red";
+        context.translate(100,100);
+        context.fillRect(0,0,400,400);
+        context.restore();
+
+        context.save();
+        context.fillStyle = "green";
+        context.globalAlpha = 0.7;
+        context.translate(300,300);
+        context.scale(0.6,0.6);
+        context.rotate(50);
+        context.fillRect(0,0,400,400);
+        context.restore();
+
+        //img
+        var backgroundImage = new Image();
+        backgroundImage.src = "data/pg3.png";
+        backgroundImage.onload = function () {
+            var pattern = context.createPattern(backgroundImage,"repeat");
+            context.save();
+            context.fillStyle = pattern;
+            context.fillRect(0,600,800,900)
+            context.restore();
+        }
+
+        // 获得鼠标点击canvas点的方法:
+        canvas.addEventListener("mouseup", click);
+        function click (event){
+            var x = event.clientX - canvas.getBoundingClientRect().left;
+            var y = event.clientY - canvas.getBoundingClientRect().top;
+            console.log(x,y);
+        }
+    }
+
+</script>
+</body>
+</html>
